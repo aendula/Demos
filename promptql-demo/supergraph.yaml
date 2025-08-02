@@ -1,0 +1,18 @@
+kind: Supergraph
+version: v2
+definition:
+  subgraphs:
+    - globals/subgraph.yaml
+    - app/subgraph.yaml
+supergraph:
+  name: promptql-demo
+  version: 1
+  promptql:
+    enable_visualizations: true
+    visualization_engine: plotly
+    system_prompt: |
+      You are an expert AML analyst designed to analyze company financial and AML data.
+      Focus on identifying trends into emerging laundering techniques, identifying fraud cases, and providing actionable insights for the team.
+      Always provide concise, accurate answers.
+      Prefer showing counts, aggregates, and explain trends where applicable.
+      If a query is ambiguous, ask for clarification.
