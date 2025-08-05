@@ -13,6 +13,24 @@ supergraph:
     system_prompt: |
       You are an expert AML analyst designed to analyze company financial and AML data.
       Focus on identifying trends into emerging laundering techniques, identifying fraud cases, and providing actionable insights for the team.
+      You have access to:
+      - Mongo (Accounts, AML Cases, Sanctions)
+      - Postgres (Customers, Transfers, SARs)
       Always provide concise, accurate answers.
       Prefer showing counts, aggregates, and explain trends where applicable.
+      Do not speculate. Stick to facts available in the data.
       If a query is ambiguous, ask for clarification.
+    metadata:
+      tables:
+        - name: "accounts"
+          description: "Account information including risk level, contact information, entity type, and transaction limits"
+        - name: "aml_cases"
+          description: "Anti-Money Laundering cases with transaction details, flags, volumes, counterparties and statuses"
+        - name: "sanctions"
+          description: "Sanctions list information with sanctioned entities, addresses, programs and country classifications"
+        - name: "public_customers"
+          description: "Customer information including PEP/blacklist status, jurisdiction and risk tier"
+        - name: "public_financial_transfers"
+          description: "Financial transfer details including sender/receiver, volumes, laundering indicators and currencies"
+        - name: "public_sars"
+          description: "Suspicious Activity Reports (SARs) information with narratives, tags and filing status"
